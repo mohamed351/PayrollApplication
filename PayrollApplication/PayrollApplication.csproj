@@ -1,0 +1,791 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{373A7DDE-46DA-430C-9438-E57B7C8A59FA}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>PayrollApplication</RootNamespace>
+    <AssemblyName>PayrollApplication</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BAL">
+      <HintPath>..\BAL\bin\Debug\BAL.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.BonusSkins.v17.2, Version=17.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v17.2, Version=17.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Printing.v17.2.Core, Version=17.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v17.2, Version=17.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraEditors.v17.2, Version=17.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraGrid.v17.2, Version=17.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v17.2, Version=17.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPrinting.v17.2, Version=17.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="GlassButton">
+      <HintPath>C:\Users\Mohamed Beshri Amer\Downloads\Compressed\glassbutton_demo\GlassButton (demo)\GlassButton.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialSkin">
+      <HintPath>..\..\..\My Application\My Frame\MaterialSkin\MaterialSkin.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework">
+      <HintPath>..\..\..\My Application\My Frame\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Design">
+      <HintPath>..\..\..\My Application\My Frame\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Fonts">
+      <HintPath>..\..\..\My Application\My Frame\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Fonts.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MyDataLayer">
+      <HintPath>..\BAL\bin\Debug\MyDataLayer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AddBtnSalary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddBtnSalary.Designer.cs">
+      <DependentUpon>AddBtnSalary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddDepartment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddDepartment.Designer.cs">
+      <DependentUpon>AddDepartment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddfrmJob.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddfrmJob.Designer.cs">
+      <DependentUpon>AddfrmJob.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AttendForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AttendForm.Designer.cs">
+      <DependentUpon>AttendForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CompanyDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CompanyDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DeleteDepartment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeleteDepartment.Designer.cs">
+      <DependentUpon>DeleteDepartment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DepartmentReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DepartmentReport.Designer.cs">
+      <DependentUpon>DepartmentReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DepartmentSalaryChart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DepartmentSalaryChart.Designer.cs">
+      <DependentUpon>DepartmentSalaryChart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Edit2Department.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Edit2Department.Designer.cs">
+      <DependentUpon>Edit2Department.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditDepartment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditDepartment.Designer.cs">
+      <DependentUpon>EditDepartment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditJobName.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditJobName.Designer.cs">
+      <DependentUpon>EditJobName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Employees.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Employees.Designer.cs">
+      <DependentUpon>Employees.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeesReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmployeesReport.Designer.cs">
+      <DependentUpon>EmployeesReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAddEmployees_SalaryInformation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddEmployees_SalaryInformation.Designer.cs">
+      <DependentUpon>frmAddEmployees_SalaryInformation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAddlogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddlogin.Designer.cs">
+      <DependentUpon>frmAddlogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAddPunishment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAddPunishment.Designer.cs">
+      <DependentUpon>FrmAddPunishment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAddSalary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddSalary.Designer.cs">
+      <DependentUpon>frmAddSalary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmBank.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBank.Designer.cs">
+      <DependentUpon>frmBank.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEditEmployees.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEditEmployees.Designer.cs">
+      <DependentUpon>FrmEditEmployees.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEditPunishment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEditPunishment.Designer.cs">
+      <DependentUpon>FrmEditPunishment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEmployeesAllInformations.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEmployeesAllInformations.Designer.cs">
+      <DependentUpon>FrmEmployeesAllInformations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmJob.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmJob.Designer.cs">
+      <DependentUpon>FrmJob.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLogin_System.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLogin_System.Designer.cs">
+      <DependentUpon>FrmLogin_System.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSalaryInformation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSalaryInformation.Designer.cs">
+      <DependentUpon>frmSalaryInformation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSelectManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSelectManager.Designer.cs">
+      <DependentUpon>FrmSelectManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSubTrackSalary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSubTrackSalary.Designer.cs">
+      <DependentUpon>frmSubTrackSalary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helper.cs" />
+    <Compile Include="Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main.Designer.cs">
+      <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OurModel\AddSalary.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OurModel\AddSalaryBank_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OurModel\AttendanceDay.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OurModel\AttendanceDays_Employees.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OurModel\Bank.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OurModel\Bank_Informations.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OurModel\Department.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OurModel\Employee.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OurModel\fn_AddSalary_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OurModel\fn_groupby_TotalAddSalary_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OurModel\fn_groupby_TotalSubTrackSalary_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OurModel\fn_SubTractSalary_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OurModel\Have_Login_Program.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OurModel\IFTakedSalay_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OurModel\JobTitle.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OurModel\Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OurModel\Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OurModel\Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="OurModel\SalaryInfomation_AddSalary.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OurModel\SalaryInformation.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OurModel\SalaryInformation_SubTrack.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OurModel\SalaryTaxInformation.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OurModel\Sanctions_List.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OurModel\Sp_Employee_Attend_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OurModel\sp_GetAttendance_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OurModel\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OurModel\sp_helpdiagrams_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OurModel\sp_IFEmployeesGetSalary_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OurModel\sp_Login_Employees_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OurModel\sp_SelectAddSalayInfo_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OurModel\sp_SelectDepartment_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OurModel\sp_SelectJobTitle_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OurModel\Sp_SelectSalary_BankID_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OurModel\Sp_SelectSalary_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OurModel\sp_Select_DepartmentSalaryReport_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OurModel\sp_select_Department_and_Manager_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OurModel\sp_Select_Employees1_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OurModel\sp_Select_Employees_HaveLogin_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OurModel\sp_Select_Employees_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OurModel\sp_select_Login_Employees_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OurModel\sp_Select_Sanction_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OurModel\SubSalaryBank_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OurModel\SubTractSalary.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OurModel\sysdiagram.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Print_frm_Employees.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Print_frm_Employees.Designer.cs">
+      <DependentUpon>Print_frm_Employees.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportsForms\DepartmentAndBankReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportsForms\DepartmentAndBankReport.Designer.cs">
+      <DependentUpon>DepartmentAndBankReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportsForms\EmpDetials.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportsForms\EmpDetials.Designer.cs">
+      <DependentUpon>EmpDetials.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportsForms\frmDidnotSalary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportsForms\frmDidnotSalary.Designer.cs">
+      <DependentUpon>frmDidnotSalary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportsForms\frmInsuranceReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportsForms\frmInsuranceReport.Designer.cs">
+      <DependentUpon>frmInsuranceReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportsForms\FrmSalaryInformation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportsForms\FrmSalaryInformation.Designer.cs">
+      <DependentUpon>FrmSalaryInformation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportsForms\frmTaxValue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportsForms\frmTaxValue.Designer.cs">
+      <DependentUpon>frmTaxValue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportsForms\SalaryEmployeesInformation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportsForms\SalaryEmployeesInformation.Designer.cs">
+      <DependentUpon>SalaryEmployeesInformation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\DepartmentSalaryChart.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DepartmentSalaryChart.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\DepartmentSalaryReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DepartmentSalaryReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\EmpDetialsReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EmpDetialsReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\EmployeesDepartmentReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EmployeesDepartmentReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Employeesnot.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Employeesnot.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\InsuranceReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InsuranceReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Reporting.cs">
+      <DependentUpon>Reporting.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Reporting.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reporting.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\SalaryInformation.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SalaryInformation.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\TaxValueReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TaxValueReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Sanctionfrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sanctionfrm.Designer.cs">
+      <DependentUpon>Sanctionfrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SeeTax.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SeeTax.Designer.cs">
+      <DependentUpon>SeeTax.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="testring.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="testring.Designer.cs">
+      <DependentUpon>testring.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AddBtnSalary.resx">
+      <DependentUpon>AddBtnSalary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddDepartment.resx">
+      <DependentUpon>AddDepartment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddfrmJob.resx">
+      <DependentUpon>AddfrmJob.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AttendForm.resx">
+      <DependentUpon>AttendForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DeleteDepartment.resx">
+      <DependentUpon>DeleteDepartment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DepartmentReport.resx">
+      <DependentUpon>DepartmentReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DepartmentSalaryChart.resx">
+      <DependentUpon>DepartmentSalaryChart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Edit2Department.resx">
+      <DependentUpon>Edit2Department.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditDepartment.resx">
+      <DependentUpon>EditDepartment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditJobName.resx">
+      <DependentUpon>EditJobName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Employees.resx">
+      <DependentUpon>Employees.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmployeesReport.resx">
+      <DependentUpon>EmployeesReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAddEmployees_SalaryInformation.resx">
+      <DependentUpon>frmAddEmployees_SalaryInformation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAddlogin.resx">
+      <DependentUpon>frmAddlogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAddPunishment.resx">
+      <DependentUpon>FrmAddPunishment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAddSalary.resx">
+      <DependentUpon>frmAddSalary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBank.resx">
+      <DependentUpon>frmBank.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEditEmployees.resx">
+      <DependentUpon>FrmEditEmployees.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEditPunishment.resx">
+      <DependentUpon>FrmEditPunishment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEmployeesAllInformations.resx">
+      <DependentUpon>FrmEmployeesAllInformations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmJob.resx">
+      <DependentUpon>FrmJob.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLogin_System.resx">
+      <DependentUpon>FrmLogin_System.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSalaryInformation.resx">
+      <DependentUpon>frmSalaryInformation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSelectManager.resx">
+      <DependentUpon>FrmSelectManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSubTrackSalary.resx">
+      <DependentUpon>frmSubTrackSalary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Print_frm_Employees.resx">
+      <DependentUpon>Print_frm_Employees.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report1.rdlc" />
+    <EmbeddedResource Include="Report2.rdlc" />
+    <EmbeddedResource Include="ReportsForms\DepartmentAndBankReport.resx">
+      <DependentUpon>DepartmentAndBankReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportsForms\EmpDetials.resx">
+      <DependentUpon>EmpDetials.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportsForms\frmDidnotSalary.resx">
+      <DependentUpon>frmDidnotSalary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportsForms\frmInsuranceReport.resx">
+      <DependentUpon>frmInsuranceReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportsForms\FrmSalaryInformation.resx">
+      <DependentUpon>FrmSalaryInformation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportsForms\frmTaxValue.resx">
+      <DependentUpon>frmTaxValue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportsForms\SalaryEmployeesInformation.resx">
+      <DependentUpon>SalaryEmployeesInformation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\DepartmentSalaryChart.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DepartmentSalaryChart.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\DepartmentSalaryReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DepartmentSalaryReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\EmpDetialsReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>EmpDetialsReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\EmployeesDepartmentReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>EmployeesDepartmentReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Employeesnot.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Employeesnot.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\InsuranceReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>InsuranceReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\SalaryInformation.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>SalaryInformation.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\TaxValueReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>TaxValueReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sanctionfrm.resx">
+      <DependentUpon>Sanctionfrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SeeTax.resx">
+      <DependentUpon>SeeTax.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="testring.resx">
+      <DependentUpon>testring.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="CompanyDataSet.xsc">
+      <DependentUpon>CompanyDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="CompanyDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CompanyDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CompanyDataSet.xss">
+      <DependentUpon>CompanyDataSet.xsd</DependentUpon>
+    </None>
+    <EntityDeploy Include="OurModel\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="OurModel\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\Reporting.xsc">
+      <DependentUpon>Reporting.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\Reporting.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Reporting.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reports\Reporting.xss">
+      <DependentUpon>Reporting.xsd</DependentUpon>
+    </None>
+    <None Include="Resources\resolutions-23-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cog-64.png" />
+    <None Include="Resources\revisi_01-64.png" />
+    <None Include="Resources\profile__avatar__person__money__salary-64.png" />
+    <None Include="Resources\13_Tax-64.png" />
+    <None Include="Resources\business-work_2-64.png" />
+    <None Include="Resources\preferences-system-time %281%29.png" />
+    <None Include="Resources\preferences-system-time.png" />
+    <None Include="Resources\Money_saveblockmoney-64.png" />
+    <None Include="Resources\lock-512.png" />
+    <Content Include="OurModel\Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="OurModel\Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
+    <None Include="Resources\Analytics-64.png" />
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

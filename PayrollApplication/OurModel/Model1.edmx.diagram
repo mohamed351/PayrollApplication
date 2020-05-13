@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5dd95cb3d22f40b88fa7a1cb07688fe4" Name="Diagram1" ZoomLevel="71">
+        <EntityTypeShape EntityType="CompanyModel.AddSalary" Width="1.5" PointX="8.25" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CompanyModel.AttendanceDay" Width="1.875" PointX="4.125" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CompanyModel.AttendanceDays_Employees" Width="1.5" PointX="4.625" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CompanyModel.Bank" Width="1.5" PointX="8.375" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CompanyModel.Bank_Informations" Width="1.5" PointX="10.5" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CompanyModel.Department" Width="1.5" PointX="6.375" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CompanyModel.Employee" Width="1.5" PointX="2.625" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CompanyModel.Have_Login_Program" Width="1.5" PointX="6.25" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CompanyModel.JobTitle" Width="1.5" PointX="1" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CompanyModel.SalaryInfomation_AddSalary" Width="1.5" PointX="10.5" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CompanyModel.SalaryInformation" Width="1.5" PointX="8.25" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CompanyModel.SalaryInformation_SubTrack" Width="1.5" PointX="10.5" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CompanyModel.SalaryTaxInformation" Width="1.5" PointX="6.5" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="CompanyModel.Sanctions_List" Width="1.5" PointX="12.625" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CompanyModel.SubTractSalary" Width="1.5" PointX="13" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CompanyModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="CompanyModel.FK_SalaryInfomation_AddSalary_AddSalary" ManuallyRouted="false" />
+        <AssociationConnector Association="CompanyModel.Fk_AttendanceDays_Employees_AttendanceDays" ManuallyRouted="false" />
+        <AssociationConnector Association="CompanyModel.Fk_AttendanceDays_Employees_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="CompanyModel.Fk_Bank_Informations_Bank" ManuallyRouted="false" />
+        <AssociationConnector Association="CompanyModel.Fk_Bank_Informations_SalaryInformation" ManuallyRouted="false" />
+        <AssociationConnector Association="CompanyModel.FK_Department_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="CompanyModel.FK_ManagerID_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="CompanyModel.Fk_Employees_JobTitle" ManuallyRouted="false" />
+        <AssociationConnector Association="CompanyModel.Fk_Have_Login_Program_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="CompanyModel.FK_SalaryInformation_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="CompanyModel.FK_SalaryInfomation_AddSalary_SalaryInformation" ManuallyRouted="false" />
+        <AssociationConnector Association="CompanyModel.Fk_SalaryInformation_SalaryTaxInformation" ManuallyRouted="false" />
+        <AssociationConnector Association="CompanyModel.FK_SalaryInformation_SubTrack_SalaryInformation" ManuallyRouted="false" />
+        <AssociationConnector Association="CompanyModel.FK_SalaryInformation_SubTrack_SubTractSalary" ManuallyRouted="false" />
+        <AssociationConnector Association="CompanyModel.Fk_SubTractSalary_Sanctions_List" ManuallyRouted="false" />
+        <AssociationConnector Association="CompanyModel.FK_Bank_Informations_Employees" />
+        <AssociationConnector Association="CompanyModel.FK_Bank_Informations_SalaryInformation1" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

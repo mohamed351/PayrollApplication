@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayrollApplication", "PayrollApplication\PayrollApplication.csproj", "{373A7DDE-46DA-430C-9438-E57B7C8A59FA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BAL", "BAL\BAL.csproj", "{7830DB72-0E57-4D40-9561-FC145493E735}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{373A7DDE-46DA-430C-9438-E57B7C8A59FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{373A7DDE-46DA-430C-9438-E57B7C8A59FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{373A7DDE-46DA-430C-9438-E57B7C8A59FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{373A7DDE-46DA-430C-9438-E57B7C8A59FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7830DB72-0E57-4D40-9561-FC145493E735}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7830DB72-0E57-4D40-9561-FC145493E735}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7830DB72-0E57-4D40-9561-FC145493E735}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7830DB72-0E57-4D40-9561-FC145493E735}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {88E3A099-79EE-4AED-92DA-7FA13902C829}
+	EndGlobalSection
+EndGlobal

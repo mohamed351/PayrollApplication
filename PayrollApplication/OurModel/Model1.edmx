@@ -1,0 +1,1991 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CompanyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AddSalary">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Amount" Type="decimal" Precision="9" Scale="2" />
+          <Property Name="Justification" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AttendanceDays">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Attendance_Date" Type="date" />
+        </EntityType>
+        <EntityType Name="AttendanceDays_Employees">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" />
+          <Property Name="AttendanceID" Type="int" />
+          <Property Name="AttendTime" Type="datetime" />
+          <Property Name="LeaveTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Bank">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="BankBlance" Type="decimal" Precision="9" Scale="2" />
+          <Property Name="AddedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Bank_Informations">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BankID" Type="int" />
+          <Property Name="EmployeeInformationID" Type="int" />
+          <Property Name="SalaryInformationID" Type="int" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DepartmentName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="ISActive" Type="bit" />
+          <Property Name="ManagerID" Type="int" />
+        </EntityType>
+        <EntityType Name="Employees">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmployeeNumber" Type="uniqueidentifier" />
+          <Property Name="Salary" Type="decimal" Precision="9" Scale="2" />
+          <Property Name="HireDate" Type="date" />
+          <Property Name="DateOFBirth" Type="date" />
+          <Property Name="Picture" Type="image" />
+          <Property Name="PictureUrl" Type="nvarchar(max)" />
+          <Property Name="ISActive" Type="bit" />
+          <Property Name="DepartmentID" Type="int" />
+          <Property Name="password" Type="nvarchar(max)" />
+          <Property Name="FingerPrintNumber" Type="int" />
+          <Property Name="Marital_status" Type="nvarchar" MaxLength="50" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="6" />
+          <Property Name="JobID" Type="int" />
+          <Property Name="username" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Have_Login_Program">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeesID" Type="int" />
+          <Property Name="ISDeleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="JobTitles">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="RangeMin" Type="decimal" Precision="9" Scale="2" />
+          <Property Name="RangeMax" Type="decimal" Precision="9" Scale="2" />
+          <Property Name="ISDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="SalaryInfomation_AddSalary">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SalaryInformationID" Type="int" />
+          <Property Name="AddSalaryID" Type="int" />
+          <Property Name="amount" Type="decimal" Precision="9" Scale="2" />
+        </EntityType>
+        <EntityType Name="SalaryInformation">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" />
+          <Property Name="DateOFSalary" Type="datetime" />
+          <Property Name="Salary" Type="decimal" Precision="9" Scale="2" />
+          <Property Name="AllSalary" Type="decimal" Precision="9" Scale="2" />
+          <Property Name="AccountName" Type="nvarchar(max)" />
+          <Property Name="TaxInformationID" Type="int" />
+          <Property Name="Insurance" Type="decimal" Precision="9" Scale="2" />
+          <Property Name="SalaryAfterInsurance" Type="decimal" Precision="9" Scale="2" />
+          <Property Name="TaxValue" Type="decimal" Precision="9" Scale="3" />
+        </EntityType>
+        <EntityType Name="SalaryInformation_SubTrack">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SalaryInformationID" Type="int" />
+          <Property Name="SubTackSalary" Type="int" />
+          <Property Name="amount" Type="decimal" Precision="9" Scale="2" />
+        </EntityType>
+        <EntityType Name="SalaryTaxInformation">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Taxpercent" Type="decimal" Precision="3" Scale="3" />
+          <Property Name="MaxValue" Type="decimal" Precision="9" Scale="2" />
+          <Property Name="MinValue" Type="decimal" Precision="9" Scale="2" />
+          <Property Name="TaxValue" Type="decimal" Precision="9" Scale="2" />
+        </EntityType>
+        <EntityType Name="Sanctions_List">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sanction_Name" Type="nvarchar(max)" />
+          <Property Name="Sanction_Decription" Type="nvarchar(max)" />
+          <Property Name="ISDeleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="SubTractSalary">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Amount" Type="decimal" Precision="9" Scale="2" />
+          <Property Name="Justification" Type="nvarchar(max)" />
+          <Property Name="SanctionsID" Type="int" />
+          <Property Name="IDSalaryInformation" Type="int" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'Company.dbo.vw_ShowEmployeesDetails' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="vw_ShowEmployeesDetails">
+          <Property Name="EmployeeName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Salary" Type="decimal" Precision="9" Scale="2" />
+          <Property Name="JobTitle" Type="nvarchar(max)" />
+          <Property Name="DepartmentName" Type="nvarchar" MaxLength="100" />
+        </EntityType>-->
+        <Association Name="Fk_AttendanceDays_Employees_AttendanceDays">
+          <End Role="AttendanceDays" Type="Self.AttendanceDays" Multiplicity="0..1" />
+          <End Role="AttendanceDays_Employees" Type="Self.AttendanceDays_Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AttendanceDays">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AttendanceDays_Employees">
+              <PropertyRef Name="AttendanceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_AttendanceDays_Employees_Employees">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="0..1" />
+          <End Role="AttendanceDays_Employees" Type="Self.AttendanceDays_Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AttendanceDays_Employees">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bank_Informations_Bank">
+          <End Role="Bank" Type="Self.Bank" Multiplicity="0..1" />
+          <End Role="Bank_Informations" Type="Self.Bank_Informations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bank">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Bank_Informations">
+              <PropertyRef Name="BankID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bank_Informations_Employees">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="0..1" />
+          <End Role="Bank_Informations" Type="Self.Bank_Informations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Bank_Informations">
+              <PropertyRef Name="EmployeeInformationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bank_Informations_SalaryInformation">
+          <End Role="SalaryInformation" Type="Self.SalaryInformation" Multiplicity="0..1" />
+          <End Role="Bank_Informations" Type="Self.Bank_Informations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SalaryInformation">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Bank_Informations">
+              <PropertyRef Name="SalaryInformationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Department_Employees">
+          <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="DepartmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Employees_JobTitle">
+          <End Role="JobTitles" Type="Self.JobTitles" Multiplicity="0..1" />
+          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JobTitles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="JobID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Have_Login_Program_Employees">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="0..1" />
+          <End Role="Have_Login_Program" Type="Self.Have_Login_Program" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Have_Login_Program">
+              <PropertyRef Name="EmployeesID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ManagerID_Employees">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="0..1" />
+          <End Role="Department" Type="Self.Department" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Department">
+              <PropertyRef Name="ManagerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalaryInfomation_AddSalary_AddSalary">
+          <End Role="AddSalary" Type="Self.AddSalary" Multiplicity="0..1" />
+          <End Role="SalaryInfomation_AddSalary" Type="Self.SalaryInfomation_AddSalary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AddSalary">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SalaryInfomation_AddSalary">
+              <PropertyRef Name="AddSalaryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalaryInfomation_AddSalary_SalaryInformation">
+          <End Role="SalaryInformation" Type="Self.SalaryInformation" Multiplicity="0..1" />
+          <End Role="SalaryInfomation_AddSalary" Type="Self.SalaryInfomation_AddSalary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SalaryInformation">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SalaryInfomation_AddSalary">
+              <PropertyRef Name="SalaryInformationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalaryInformation_SalaryTaxInformation">
+          <End Role="SalaryTaxInformation" Type="Self.SalaryTaxInformation" Multiplicity="0..1" />
+          <End Role="SalaryInformation" Type="Self.SalaryInformation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SalaryTaxInformation">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SalaryInformation">
+              <PropertyRef Name="TaxInformationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalaryInformation_SubTrack_SalaryInformation">
+          <End Role="SalaryInformation" Type="Self.SalaryInformation" Multiplicity="0..1" />
+          <End Role="SalaryInformation_SubTrack" Type="Self.SalaryInformation_SubTrack" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SalaryInformation">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SalaryInformation_SubTrack">
+              <PropertyRef Name="SalaryInformationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalaryInformation_SubTrack_SubTractSalary">
+          <End Role="SubTractSalary" Type="Self.SubTractSalary" Multiplicity="0..1" />
+          <End Role="SalaryInformation_SubTrack" Type="Self.SalaryInformation_SubTrack" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubTractSalary">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SalaryInformation_SubTrack">
+              <PropertyRef Name="SubTackSalary" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_SubTractSalary_Sanctions_List">
+          <End Role="Sanctions_List" Type="Self.Sanctions_List" Multiplicity="0..1" />
+          <End Role="SubTractSalary" Type="Self.SubTractSalary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sanctions_List">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SubTractSalary">
+              <PropertyRef Name="SanctionsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="AddSalaryBank" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EmpID" Type="int" Mode="In" />
+          <Parameter Name="BankID" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="ID" Type="int" Nullable="false" />
+                <Property Name="Name" Type="nvarchar" MaxLength="50" />
+                <Property Name="AddSalary" Type="decimal" Precision="38" Scale="2" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="IFTakedSalay" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="BankID" Type="int" Mode="In" />
+          <Parameter Name="EmpID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Sp_Employee_Attend" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="AtdID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Sp_SelectSalary" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EmpID" Type="int" Mode="In" />
+          <Parameter Name="SalayInformationID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Sp_SelectSalary_BankID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EmpID" Type="int" Mode="In" />
+          <Parameter Name="BankID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SubSalaryBank" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EmpID" Type="int" Mode="In" />
+          <Parameter Name="BankID" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="ID" Type="int" Nullable="false" />
+                <Property Name="Name" Type="nvarchar" MaxLength="50" />
+                <Property Name="subSalary" Type="decimal" Precision="38" Scale="2" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="fn_AddSalary" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="empID" Type="int" Mode="In" />
+          <Parameter Name="salaryinfoID" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="infoID" Type="int" Nullable="false" />
+                <Property Name="empID" Type="int" Nullable="false" />
+                <Property Name="addSal" Type="decimal" Precision="38" Scale="2" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="fn_AttendTimeProccess" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="fn_SubTractSalary" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="empID" Type="int" Mode="In" />
+          <Parameter Name="salaryinfoID" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="infoID" Type="int" Nullable="false" />
+                <Property Name="empID" Type="int" Nullable="false" />
+                <Property Name="subtractSalary" Type="decimal" Precision="38" Scale="2" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="fn_groupby_TotalAddSalary" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="DepartmentID" Type="int" Nullable="false" />
+                <Property Name="DepartmentName" Type="nvarchar" MaxLength="100" />
+                <Property Name="TotalAddSalary" Type="decimal" Precision="38" Scale="2" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="fn_groupby_TotalSubTrackSalary" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="DepartmentID" Type="int" Nullable="false" />
+                <Property Name="DepartmentName" Type="nvarchar" MaxLength="100" />
+                <Property Name="totalSubTrackSalary" Type="decimal" Precision="38" Scale="2" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="sp_AddDepartment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DepartmentName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Description" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_AddMonthSalary" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EmpID" Type="int" Mode="In" />
+          <Parameter Name="BankID" Type="int" Mode="In" />
+          <Parameter Name="Salary" Type="decimal" Mode="In" />
+          <Parameter Name="AllSalary" Type="decimal" Mode="In" />
+          <Parameter Name="AccountName" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Insurance" Type="decimal" Mode="In" />
+          <Parameter Name="TaxValue" Type="decimal" Mode="In" />
+          <Parameter Name="TaxID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_AddSanction" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SanctionName" Type="nvarchar" Mode="In" />
+          <Parameter Name="SanctionDescription" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_AttendEmployee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EmployeesID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_Delete_Login" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_Delete_Sanctions" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_EditDepartment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="DepartmentName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Description" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_EditEmployees" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="Salary" Type="decimal" Mode="In" />
+          <Parameter Name="HireDate" Type="date" Mode="In" />
+          <Parameter Name="DateOFBith" Type="date" Mode="In" />
+          <Parameter Name="picture" Type="image" Mode="In" />
+          <Parameter Name="Marital_status" Type="nvarchar" Mode="In" />
+          <Parameter Name="Geneder" Type="nvarchar" Mode="In" />
+          <Parameter Name="username" Type="nvarchar" Mode="In" />
+          <Parameter Name="password" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="JobID" Type="int" Mode="In" />
+          <Parameter Name="DepartmentNumber" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_EditSanction" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SanctionID" Type="int" Mode="In" />
+          <Parameter Name="SanctionName" Type="nvarchar" Mode="In" />
+          <Parameter Name="SanctionDescription" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_EmployeesAttend" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EmployeesID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_EmployeesLeave" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EmployeesID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_FlagDepartment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_GetAttendance" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="year" Type="nvarchar" Mode="In" />
+          <Parameter Name="month" Type="nvarchar" Mode="In" />
+          <Parameter Name="Day" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_IFEmployeesGetSalary" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EmpID" Type="int" Mode="In" />
+          <Parameter Name="BankID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_InsertEmployees" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="Salary" Type="decimal" Mode="In" />
+          <Parameter Name="HireDate" Type="date" Mode="In" />
+          <Parameter Name="DateOFBith" Type="date" Mode="In" />
+          <Parameter Name="picture" Type="image" Mode="In" />
+          <Parameter Name="Marital_status" Type="nvarchar" Mode="In" />
+          <Parameter Name="Geneder" Type="nvarchar" Mode="In" />
+          <Parameter Name="username" Type="nvarchar" Mode="In" />
+          <Parameter Name="password" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="JobID" Type="int" Mode="In" />
+          <Parameter Name="DepartmentNumber" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_Insert_Have_Login_Program" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_Insert_Login" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_Login_Employees" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="username" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="password" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_SelectAddSalayInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EmpID" Type="int" Mode="In" />
+          <Parameter Name="BankID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_SelectDepartment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_SelectJobTitle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_Select_DepartmentSalaryReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="BankID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_Select_Employees" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_Select_Employees1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_Select_Employees_HaveLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_Select_Sanction" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_UnFlagDepartment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_deleteAddSalary" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_select_Department_and_Manager" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_select_Login_Employees" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="CompanyModelStoreContainer">
+          <EntitySet Name="AddSalary" EntityType="Self.AddSalary" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AttendanceDays" EntityType="Self.AttendanceDays" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AttendanceDays_Employees" EntityType="Self.AttendanceDays_Employees" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bank" EntityType="Self.Bank" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bank_Informations" EntityType="Self.Bank_Informations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Have_Login_Program" EntityType="Self.Have_Login_Program" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JobTitles" EntityType="Self.JobTitles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SalaryInfomation_AddSalary" EntityType="Self.SalaryInfomation_AddSalary" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SalaryInformation" EntityType="Self.SalaryInformation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SalaryInformation_SubTrack" EntityType="Self.SalaryInformation_SubTrack" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SalaryTaxInformation" EntityType="Self.SalaryTaxInformation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sanctions_List" EntityType="Self.Sanctions_List" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubTractSalary" EntityType="Self.SubTractSalary" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="Fk_AttendanceDays_Employees_AttendanceDays" Association="Self.Fk_AttendanceDays_Employees_AttendanceDays">
+            <End Role="AttendanceDays" EntitySet="AttendanceDays" />
+            <End Role="AttendanceDays_Employees" EntitySet="AttendanceDays_Employees" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_AttendanceDays_Employees_Employees" Association="Self.Fk_AttendanceDays_Employees_Employees">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="AttendanceDays_Employees" EntitySet="AttendanceDays_Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bank_Informations_Bank" Association="Self.FK_Bank_Informations_Bank">
+            <End Role="Bank" EntitySet="Bank" />
+            <End Role="Bank_Informations" EntitySet="Bank_Informations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bank_Informations_Employees" Association="Self.FK_Bank_Informations_Employees">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Bank_Informations" EntitySet="Bank_Informations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bank_Informations_SalaryInformation" Association="Self.FK_Bank_Informations_SalaryInformation">
+            <End Role="SalaryInformation" EntitySet="SalaryInformation" />
+            <End Role="Bank_Informations" EntitySet="Bank_Informations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Department_Employees" Association="Self.FK_Department_Employees">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Employees_JobTitle" Association="Self.Fk_Employees_JobTitle">
+            <End Role="JobTitles" EntitySet="JobTitles" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Have_Login_Program_Employees" Association="Self.Fk_Have_Login_Program_Employees">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Have_Login_Program" EntitySet="Have_Login_Program" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ManagerID_Employees" Association="Self.FK_ManagerID_Employees">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Department" EntitySet="Department" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalaryInfomation_AddSalary_AddSalary" Association="Self.FK_SalaryInfomation_AddSalary_AddSalary">
+            <End Role="AddSalary" EntitySet="AddSalary" />
+            <End Role="SalaryInfomation_AddSalary" EntitySet="SalaryInfomation_AddSalary" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalaryInfomation_AddSalary_SalaryInformation" Association="Self.FK_SalaryInfomation_AddSalary_SalaryInformation">
+            <End Role="SalaryInformation" EntitySet="SalaryInformation" />
+            <End Role="SalaryInfomation_AddSalary" EntitySet="SalaryInfomation_AddSalary" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalaryInformation_SalaryTaxInformation" Association="Self.FK_SalaryInformation_SalaryTaxInformation">
+            <End Role="SalaryTaxInformation" EntitySet="SalaryTaxInformation" />
+            <End Role="SalaryInformation" EntitySet="SalaryInformation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalaryInformation_SubTrack_SalaryInformation" Association="Self.FK_SalaryInformation_SubTrack_SalaryInformation">
+            <End Role="SalaryInformation" EntitySet="SalaryInformation" />
+            <End Role="SalaryInformation_SubTrack" EntitySet="SalaryInformation_SubTrack" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalaryInformation_SubTrack_SubTractSalary" Association="Self.FK_SalaryInformation_SubTrack_SubTractSalary">
+            <End Role="SubTractSalary" EntitySet="SubTractSalary" />
+            <End Role="SalaryInformation_SubTrack" EntitySet="SalaryInformation_SubTrack" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_SubTractSalary_Sanctions_List" Association="Self.Fk_SubTractSalary_Sanctions_List">
+            <End Role="Sanctions_List" EntitySet="Sanctions_List" />
+            <End Role="SubTractSalary" EntitySet="SubTractSalary" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CompanyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AddSalary">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Amount" Type="Decimal" Precision="9" Scale="2" />
+          <Property Name="Justification" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SalaryInfomation_AddSalary" Relationship="Self.FK_SalaryInfomation_AddSalary_AddSalary" FromRole="AddSalary" ToRole="SalaryInfomation_AddSalary" />
+        </EntityType>
+        <EntityType Name="AttendanceDay">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Attendance_Date" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="AttendanceDays_Employees" Relationship="Self.Fk_AttendanceDays_Employees_AttendanceDays" FromRole="AttendanceDays" ToRole="AttendanceDays_Employees" />
+        </EntityType>
+        <EntityType Name="AttendanceDays_Employees">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeID" Type="Int32" />
+          <Property Name="AttendanceID" Type="Int32" />
+          <Property Name="AttendTime" Type="DateTime" Precision="3" />
+          <Property Name="LeaveTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="AttendanceDay" Relationship="Self.Fk_AttendanceDays_Employees_AttendanceDays" FromRole="AttendanceDays_Employees" ToRole="AttendanceDays" />
+          <NavigationProperty Name="Employee" Relationship="Self.Fk_AttendanceDays_Employees_Employees" FromRole="AttendanceDays_Employees" ToRole="Employees" />
+        </EntityType>
+        <EntityType Name="Bank">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BankBlance" Type="Decimal" Precision="9" Scale="2" />
+          <Property Name="AddedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Bank_Informations" Relationship="Self.Fk_Bank_Informations_Bank" FromRole="Bank" ToRole="Bank_Informations" />
+        </EntityType>
+        <EntityType Name="Bank_Informations">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BankID" Type="Int32" />
+          <Property Name="EmployeeInformationID" Type="Int32" />
+          <NavigationProperty Name="Bank" Relationship="Self.Fk_Bank_Informations_Bank" FromRole="Bank_Informations" ToRole="Bank" />
+          <NavigationProperty Name="SalaryInformation" Relationship="Self.Fk_Bank_Informations_SalaryInformation" FromRole="Bank_Informations" ToRole="SalaryInformation" />
+          <Property Name="SalaryInformationID" Type="Int32" />
+          <NavigationProperty Name="Employee" Relationship="CompanyModel.FK_Bank_Informations_Employees" FromRole="Bank_Informations" ToRole="Employee" />
+          <NavigationProperty Name="SalaryInformation1" Relationship="CompanyModel.FK_Bank_Informations_SalaryInformation1" FromRole="Bank_Informations" ToRole="SalaryInformation" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DepartmentName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ISActive" Type="Boolean" />
+          <Property Name="ManagerID" Type="Int32" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK_Department_Employees" FromRole="Department" ToRole="Employees" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_ManagerID_Employees" FromRole="Department" ToRole="Employees" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeeNumber" Type="Guid" />
+          <Property Name="Salary" Type="Decimal" Precision="9" Scale="2" />
+          <Property Name="HireDate" Type="DateTime" Precision="0" />
+          <Property Name="DateOFBirth" Type="DateTime" Precision="0" />
+          <Property Name="Picture" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="PictureUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ISActive" Type="Boolean" />
+          <Property Name="DepartmentID" Type="Int32" />
+          <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FingerPrintNumber" Type="Int32" />
+          <Property Name="Marital_status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="JobID" Type="Int32" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AttendanceDays_Employees" Relationship="Self.Fk_AttendanceDays_Employees_Employees" FromRole="Employees" ToRole="AttendanceDays_Employees" />
+          <NavigationProperty Name="Department" Relationship="Self.FK_Department_Employees" FromRole="Employees" ToRole="Department" />
+          <NavigationProperty Name="Departments" Relationship="Self.FK_ManagerID_Employees" FromRole="Employees" ToRole="Department" />
+          <NavigationProperty Name="JobTitle" Relationship="Self.Fk_Employees_JobTitle" FromRole="Employees" ToRole="JobTitles" />
+          <NavigationProperty Name="Have_Login_Program" Relationship="Self.Fk_Have_Login_Program_Employees" FromRole="Employees" ToRole="Have_Login_Program" />
+          <NavigationProperty Name="SalaryInformations" Relationship="Self.FK_SalaryInformation_Employees" FromRole="Employees" ToRole="SalaryInformation" />
+          <NavigationProperty Name="Bank_Informations" Relationship="CompanyModel.FK_Bank_Informations_Employees" FromRole="Employee" ToRole="Bank_Informations" />
+        </EntityType>
+        <EntityType Name="Have_Login_Program">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeesID" Type="Int32" />
+          <Property Name="ISDeleted" Type="Boolean" />
+          <NavigationProperty Name="Employee" Relationship="Self.Fk_Have_Login_Program_Employees" FromRole="Have_Login_Program" ToRole="Employees" />
+        </EntityType>
+        <EntityType Name="JobTitle">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RangeMin" Type="Decimal" Precision="9" Scale="2" />
+          <Property Name="RangeMax" Type="Decimal" Precision="9" Scale="2" />
+          <Property Name="ISDelete" Type="Boolean" />
+          <NavigationProperty Name="Employees" Relationship="Self.Fk_Employees_JobTitle" FromRole="JobTitles" ToRole="Employees" />
+        </EntityType>
+        <EntityType Name="SalaryInfomation_AddSalary">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SalaryInformationID" Type="Int32" />
+          <Property Name="AddSalaryID" Type="Int32" />
+          <NavigationProperty Name="AddSalary" Relationship="Self.FK_SalaryInfomation_AddSalary_AddSalary" FromRole="SalaryInfomation_AddSalary" ToRole="AddSalary" />
+          <NavigationProperty Name="SalaryInformation" Relationship="Self.FK_SalaryInfomation_AddSalary_SalaryInformation" FromRole="SalaryInfomation_AddSalary" ToRole="SalaryInformation" />
+          <Property Name="amount" Type="Decimal" Precision="9" Scale="2" />
+        </EntityType>
+        <EntityType Name="SalaryInformation">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeID" Type="Int32" />
+          <Property Name="DateOFSalary" Type="DateTime" Precision="3" />
+          <Property Name="Salary" Type="Decimal" Precision="9" Scale="2" />
+          <Property Name="AllSalary" Type="Decimal" Precision="9" Scale="2" />
+          <Property Name="AccountName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TaxInformationID" Type="Int32" />
+          <Property Name="Insurance" Type="Decimal" Precision="9" Scale="2" />
+          <Property Name="SalaryAfterInsurance" Type="Decimal" Precision="9" Scale="2" />
+          <NavigationProperty Name="Bank_Informations" Relationship="Self.Fk_Bank_Informations_SalaryInformation" FromRole="SalaryInformation" ToRole="Bank_Informations" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_SalaryInformation_Employees" FromRole="SalaryInformation" ToRole="Employees" />
+          <NavigationProperty Name="SalaryInfomation_AddSalary" Relationship="Self.FK_SalaryInfomation_AddSalary_SalaryInformation" FromRole="SalaryInformation" ToRole="SalaryInfomation_AddSalary" />
+          <NavigationProperty Name="SalaryTaxInformation" Relationship="Self.Fk_SalaryInformation_SalaryTaxInformation" FromRole="SalaryInformation" ToRole="SalaryTaxInformation" />
+          <NavigationProperty Name="SalaryInformation_SubTrack" Relationship="Self.FK_SalaryInformation_SubTrack_SalaryInformation" FromRole="SalaryInformation" ToRole="SalaryInformation_SubTrack" />
+          <Property Name="TaxValue" Type="Decimal" Precision="9" Scale="3" />
+          <NavigationProperty Name="Bank_Informations1" Relationship="CompanyModel.FK_Bank_Informations_SalaryInformation1" FromRole="SalaryInformation" ToRole="Bank_Informations" />
+        </EntityType>
+        <EntityType Name="SalaryInformation_SubTrack">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="SalaryInformationID" Type="Int32" />
+          <Property Name="SubTackSalary" Type="Int32" />
+          <NavigationProperty Name="SalaryInformation" Relationship="Self.FK_SalaryInformation_SubTrack_SalaryInformation" FromRole="SalaryInformation_SubTrack" ToRole="SalaryInformation" />
+          <NavigationProperty Name="SubTractSalary" Relationship="Self.FK_SalaryInformation_SubTrack_SubTractSalary" FromRole="SalaryInformation_SubTrack" ToRole="SubTractSalary" />
+          <Property Name="amount" Type="Decimal" Precision="9" Scale="2" />
+        </EntityType>
+        <EntityType Name="SalaryTaxInformation">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Taxpercent" Type="Decimal" Precision="3" Scale="3" />
+          <Property Name="MaxValue" Type="Decimal" Precision="9" Scale="2" />
+          <Property Name="MinValue" Type="Decimal" Precision="9" Scale="2" />
+          <Property Name="TaxValue" Type="Decimal" Precision="9" Scale="2" />
+          <NavigationProperty Name="SalaryInformations" Relationship="Self.Fk_SalaryInformation_SalaryTaxInformation" FromRole="SalaryTaxInformation" ToRole="SalaryInformation" />
+        </EntityType>
+        <EntityType Name="Sanctions_List">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sanction_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Sanction_Decription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ISDeleted" Type="Boolean" />
+          <NavigationProperty Name="SubTractSalaries" Relationship="Self.Fk_SubTractSalary_Sanctions_List" FromRole="Sanctions_List" ToRole="SubTractSalary" />
+        </EntityType>
+        <EntityType Name="SubTractSalary">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Amount" Type="Decimal" Precision="9" Scale="2" />
+          <Property Name="Justification" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SanctionsID" Type="Int32" />
+          <Property Name="IDSalaryInformation" Type="Int32" />
+          <NavigationProperty Name="SalaryInformation_SubTrack" Relationship="Self.FK_SalaryInformation_SubTrack_SubTractSalary" FromRole="SubTractSalary" ToRole="SalaryInformation_SubTrack" />
+          <NavigationProperty Name="Sanctions_List" Relationship="Self.Fk_SubTractSalary_Sanctions_List" FromRole="SubTractSalary" ToRole="Sanctions_List" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_SalaryInfomation_AddSalary_AddSalary">
+          <End Role="AddSalary" Type="Self.AddSalary" Multiplicity="0..1" />
+          <End Role="SalaryInfomation_AddSalary" Type="Self.SalaryInfomation_AddSalary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AddSalary">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SalaryInfomation_AddSalary">
+              <PropertyRef Name="AddSalaryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_AttendanceDays_Employees_AttendanceDays">
+          <End Role="AttendanceDays" Type="Self.AttendanceDay" Multiplicity="0..1" />
+          <End Role="AttendanceDays_Employees" Type="Self.AttendanceDays_Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AttendanceDays">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AttendanceDays_Employees">
+              <PropertyRef Name="AttendanceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_AttendanceDays_Employees_Employees">
+          <End Role="Employees" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="AttendanceDays_Employees" Type="Self.AttendanceDays_Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AttendanceDays_Employees">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Bank_Informations_Bank">
+          <End Role="Bank" Type="Self.Bank" Multiplicity="0..1" />
+          <End Role="Bank_Informations" Type="Self.Bank_Informations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bank">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Bank_Informations">
+              <PropertyRef Name="BankID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Bank_Informations_SalaryInformation">
+          <End Role="SalaryInformation" Type="Self.SalaryInformation" Multiplicity="0..1" />
+          <End Role="Bank_Informations" Type="Self.Bank_Informations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SalaryInformation">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Bank_Informations">
+              <PropertyRef Name="EmployeeInformationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Department_Employees">
+          <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+          <End Role="Employees" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="DepartmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ManagerID_Employees">
+          <End Role="Employees" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Department" Type="Self.Department" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Department">
+              <PropertyRef Name="ManagerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Employees_JobTitle">
+          <End Role="JobTitles" Type="Self.JobTitle" Multiplicity="0..1" />
+          <End Role="Employees" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JobTitles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="JobID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Have_Login_Program_Employees">
+          <End Role="Employees" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Have_Login_Program" Type="Self.Have_Login_Program" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Have_Login_Program">
+              <PropertyRef Name="EmployeesID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalaryInformation_Employees">
+          <End Role="Employees" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="SalaryInformation" Type="Self.SalaryInformation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SalaryInformation">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalaryInfomation_AddSalary_SalaryInformation">
+          <End Role="SalaryInformation" Type="Self.SalaryInformation" Multiplicity="0..1" />
+          <End Role="SalaryInfomation_AddSalary" Type="Self.SalaryInfomation_AddSalary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SalaryInformation">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SalaryInfomation_AddSalary">
+              <PropertyRef Name="SalaryInformationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_SalaryInformation_SalaryTaxInformation">
+          <End Role="SalaryTaxInformation" Type="Self.SalaryTaxInformation" Multiplicity="0..1" />
+          <End Role="SalaryInformation" Type="Self.SalaryInformation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SalaryTaxInformation">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SalaryInformation">
+              <PropertyRef Name="TaxInformationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalaryInformation_SubTrack_SalaryInformation">
+          <End Role="SalaryInformation" Type="Self.SalaryInformation" Multiplicity="0..1" />
+          <End Role="SalaryInformation_SubTrack" Type="Self.SalaryInformation_SubTrack" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SalaryInformation">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SalaryInformation_SubTrack">
+              <PropertyRef Name="SalaryInformationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalaryInformation_SubTrack_SubTractSalary">
+          <End Role="SubTractSalary" Type="Self.SubTractSalary" Multiplicity="0..1" />
+          <End Role="SalaryInformation_SubTrack" Type="Self.SalaryInformation_SubTrack" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubTractSalary">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SalaryInformation_SubTrack">
+              <PropertyRef Name="SubTackSalary" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_SubTractSalary_Sanctions_List">
+          <End Role="Sanctions_List" Type="Self.Sanctions_List" Multiplicity="0..1" />
+          <End Role="SubTractSalary" Type="Self.SubTractSalary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sanctions_List">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SubTractSalary">
+              <PropertyRef Name="SanctionsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CompanyEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AddSalaries" EntityType="Self.AddSalary" />
+          <EntitySet Name="AttendanceDays" EntityType="Self.AttendanceDay" />
+          <EntitySet Name="AttendanceDays_Employees" EntityType="Self.AttendanceDays_Employees" />
+          <EntitySet Name="Banks" EntityType="Self.Bank" />
+          <EntitySet Name="Bank_Informations" EntityType="Self.Bank_Informations" />
+          <EntitySet Name="Departments" EntityType="Self.Department" />
+          <EntitySet Name="Employees" EntityType="Self.Employee" />
+          <EntitySet Name="Have_Login_Program" EntityType="Self.Have_Login_Program" />
+          <EntitySet Name="JobTitles" EntityType="Self.JobTitle" />
+          <EntitySet Name="SalaryInfomation_AddSalary" EntityType="Self.SalaryInfomation_AddSalary" />
+          <EntitySet Name="SalaryInformations" EntityType="Self.SalaryInformation" />
+          <EntitySet Name="SalaryInformation_SubTrack" EntityType="Self.SalaryInformation_SubTrack" />
+          <EntitySet Name="SalaryTaxInformations" EntityType="Self.SalaryTaxInformation" />
+          <EntitySet Name="Sanctions_List" EntityType="Self.Sanctions_List" />
+          <EntitySet Name="SubTractSalaries" EntityType="Self.SubTractSalary" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <AssociationSet Name="FK_SalaryInfomation_AddSalary_AddSalary" Association="Self.FK_SalaryInfomation_AddSalary_AddSalary">
+            <End Role="AddSalary" EntitySet="AddSalaries" />
+            <End Role="SalaryInfomation_AddSalary" EntitySet="SalaryInfomation_AddSalary" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_AttendanceDays_Employees_AttendanceDays" Association="Self.Fk_AttendanceDays_Employees_AttendanceDays">
+            <End Role="AttendanceDays" EntitySet="AttendanceDays" />
+            <End Role="AttendanceDays_Employees" EntitySet="AttendanceDays_Employees" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_AttendanceDays_Employees_Employees" Association="Self.Fk_AttendanceDays_Employees_Employees">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="AttendanceDays_Employees" EntitySet="AttendanceDays_Employees" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Bank_Informations_Bank" Association="Self.Fk_Bank_Informations_Bank">
+            <End Role="Bank" EntitySet="Banks" />
+            <End Role="Bank_Informations" EntitySet="Bank_Informations" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Bank_Informations_SalaryInformation" Association="Self.Fk_Bank_Informations_SalaryInformation">
+            <End Role="SalaryInformation" EntitySet="SalaryInformations" />
+            <End Role="Bank_Informations" EntitySet="Bank_Informations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Department_Employees" Association="Self.FK_Department_Employees">
+            <End Role="Department" EntitySet="Departments" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ManagerID_Employees" Association="Self.FK_ManagerID_Employees">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Department" EntitySet="Departments" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Employees_JobTitle" Association="Self.Fk_Employees_JobTitle">
+            <End Role="JobTitles" EntitySet="JobTitles" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Have_Login_Program_Employees" Association="Self.Fk_Have_Login_Program_Employees">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Have_Login_Program" EntitySet="Have_Login_Program" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalaryInformation_Employees" Association="Self.FK_SalaryInformation_Employees">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="SalaryInformation" EntitySet="SalaryInformations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalaryInfomation_AddSalary_SalaryInformation" Association="Self.FK_SalaryInfomation_AddSalary_SalaryInformation">
+            <End Role="SalaryInformation" EntitySet="SalaryInformations" />
+            <End Role="SalaryInfomation_AddSalary" EntitySet="SalaryInfomation_AddSalary" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_SalaryInformation_SalaryTaxInformation" Association="Self.Fk_SalaryInformation_SalaryTaxInformation">
+            <End Role="SalaryTaxInformation" EntitySet="SalaryTaxInformations" />
+            <End Role="SalaryInformation" EntitySet="SalaryInformations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalaryInformation_SubTrack_SalaryInformation" Association="Self.FK_SalaryInformation_SubTrack_SalaryInformation">
+            <End Role="SalaryInformation" EntitySet="SalaryInformations" />
+            <End Role="SalaryInformation_SubTrack" EntitySet="SalaryInformation_SubTrack" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalaryInformation_SubTrack_SubTractSalary" Association="Self.FK_SalaryInformation_SubTrack_SubTractSalary">
+            <End Role="SubTractSalary" EntitySet="SubTractSalaries" />
+            <End Role="SalaryInformation_SubTrack" EntitySet="SalaryInformation_SubTrack" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_SubTractSalary_Sanctions_List" Association="Self.Fk_SubTractSalary_Sanctions_List">
+            <End Role="Sanctions_List" EntitySet="Sanctions_List" />
+            <End Role="SubTractSalary" EntitySet="SubTractSalaries" />
+          </AssociationSet>
+          <FunctionImport Name="Sp_Employee_Attend" ReturnType="Collection(CompanyModel.Sp_Employee_Attend_Result)">
+          <Parameter Name="AtdID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="fn_AttendTimeProccess" />
+          <FunctionImport Name="sp_AddDepartment">
+            <Parameter Name="DepartmentName" Mode="In" Type="String" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_AddSanction">
+            <Parameter Name="SanctionName" Mode="In" Type="String" />
+            <Parameter Name="SanctionDescription" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_AttendEmployee">
+          <Parameter Name="EmployeesID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Delete_Login">
+          <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Delete_Sanctions">
+          <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_EditDepartment">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="DepartmentName" Mode="In" Type="String" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_EditEmployees">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="Salary" Mode="In" Type="Decimal" />
+            <Parameter Name="HireDate" Mode="In" Type="DateTime" />
+            <Parameter Name="DateOFBith" Mode="In" Type="DateTime" />
+            <Parameter Name="picture" Mode="In" Type="Binary" />
+            <Parameter Name="Marital_status" Mode="In" Type="String" />
+            <Parameter Name="Geneder" Mode="In" Type="String" />
+            <Parameter Name="username" Mode="In" Type="String" />
+            <Parameter Name="password" Mode="In" Type="String" />
+            <Parameter Name="JobID" Mode="In" Type="Int32" />
+            <Parameter Name="DepartmentNumber" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_EditSanction">
+            <Parameter Name="SanctionID" Mode="In" Type="Int32" />
+            <Parameter Name="SanctionName" Mode="In" Type="String" />
+            <Parameter Name="SanctionDescription" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_EmployeesAttend">
+          <Parameter Name="EmployeesID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_EmployeesLeave" ReturnType="Collection(Int32)">
+          <Parameter Name="EmployeesID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_FlagDepartment">
+          <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_GetAttendance" ReturnType="Collection(CompanyModel.sp_GetAttendance_Result)">
+            <Parameter Name="year" Mode="In" Type="String" />
+            <Parameter Name="month" Mode="In" Type="String" />
+            <Parameter Name="Day" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_InsertEmployees">
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="Salary" Mode="In" Type="Decimal" />
+            <Parameter Name="HireDate" Mode="In" Type="DateTime" />
+            <Parameter Name="DateOFBith" Mode="In" Type="DateTime" />
+            <Parameter Name="picture" Mode="In" Type="Binary" />
+            <Parameter Name="Marital_status" Mode="In" Type="String" />
+            <Parameter Name="Geneder" Mode="In" Type="String" />
+            <Parameter Name="username" Mode="In" Type="String" />
+            <Parameter Name="password" Mode="In" Type="String" />
+            <Parameter Name="JobID" Mode="In" Type="Int32" />
+            <Parameter Name="DepartmentNumber" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Insert_Have_Login_Program">
+          <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Insert_Login">
+          <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Login_Employees" ReturnType="Collection(CompanyModel.sp_Login_Employees_Result)">
+            <Parameter Name="username" Mode="In" Type="String" />
+            <Parameter Name="password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_SelectDepartment" ReturnType="Collection(CompanyModel.sp_SelectDepartment_Result)" />
+          <FunctionImport Name="sp_SelectJobTitle" ReturnType="Collection(CompanyModel.sp_SelectJobTitle_Result)" />
+          <FunctionImport Name="sp_Select_Employees" ReturnType="Collection(CompanyModel.sp_Select_Employees_Result)" />
+          <FunctionImport Name="sp_Select_Employees1" ReturnType="Collection(CompanyModel.sp_Select_Employees1_Result)" />
+          <FunctionImport Name="sp_Select_Employees_HaveLogin" ReturnType="Collection(CompanyModel.sp_Select_Employees_HaveLogin_Result)" />
+          <FunctionImport Name="sp_Select_Sanction" ReturnType="Collection(CompanyModel.sp_Select_Sanction_Result)" />
+          <FunctionImport Name="sp_UnFlagDepartment">
+          <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_deleteAddSalary">
+          <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(CompanyModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(CompanyModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_select_Department_and_Manager" ReturnType="Collection(CompanyModel.sp_select_Department_and_Manager_Result)" />
+          <FunctionImport Name="sp_select_Login_Employees" ReturnType="Collection(CompanyModel.sp_select_Login_Employees_Result)" />
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <AssociationSet Name="FK_Bank_Informations_Employees" Association="CompanyModel.FK_Bank_Informations_Employees">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Bank_Informations" EntitySet="Bank_Informations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bank_Informations_SalaryInformation1" Association="CompanyModel.FK_Bank_Informations_SalaryInformation1">
+            <End Role="SalaryInformation" EntitySet="SalaryInformations" />
+            <End Role="Bank_Informations" EntitySet="Bank_Informations" />
+          </AssociationSet>
+          <FunctionImport Name="sp_AddMonthSalary">
+            <Parameter Name="EmpID" Mode="In" Type="Int32" />
+            <Parameter Name="BankID" Mode="In" Type="Int32" />
+            <Parameter Name="Salary" Mode="In" Type="Decimal" />
+            <Parameter Name="AllSalary" Mode="In" Type="Decimal" />
+            <Parameter Name="AccountName" Mode="In" Type="String" />
+            <Parameter Name="Insurance" Mode="In" Type="Decimal" />
+            <Parameter Name="TaxValue" Mode="In" Type="Decimal" />
+            <Parameter Name="TaxID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_IFEmployeesGetSalary" ReturnType="Collection(CompanyModel.sp_IFEmployeesGetSalary_Result)">
+            <Parameter Name="EmpID" Mode="In" Type="Int32" />
+            <Parameter Name="BankID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="AddSalaryBank" IsComposable="true" ReturnType="Collection(CompanyModel.AddSalaryBank_Result)">
+            <Parameter Name="EmpID" Mode="In" Type="Int32" />
+            <Parameter Name="BankID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="IFTakedSalay" ReturnType="Collection(CompanyModel.IFTakedSalay_Result)">
+            <Parameter Name="BankID" Mode="In" Type="Int32" />
+            <Parameter Name="EmpID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_SelectSalary" ReturnType="Collection(CompanyModel.Sp_SelectSalary_Result)">
+            <Parameter Name="EmpID" Mode="In" Type="Int32" />
+            <Parameter Name="SalayInformationID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_SelectSalary_BankID" ReturnType="Collection(CompanyModel.Sp_SelectSalary_BankID_Result)">
+            <Parameter Name="EmpID" Mode="In" Type="Int32" />
+            <Parameter Name="BankID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SubSalaryBank" IsComposable="true" ReturnType="Collection(CompanyModel.SubSalaryBank_Result)">
+            <Parameter Name="EmpID" Mode="In" Type="Int32" />
+            <Parameter Name="BankID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="fn_AddSalary" IsComposable="true" ReturnType="Collection(CompanyModel.fn_AddSalary_Result)">
+            <Parameter Name="empID" Mode="In" Type="Int32" />
+            <Parameter Name="salaryinfoID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="fn_SubTractSalary" IsComposable="true" ReturnType="Collection(CompanyModel.fn_SubTractSalary_Result)">
+            <Parameter Name="empID" Mode="In" Type="Int32" />
+            <Parameter Name="salaryinfoID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="fn_groupby_TotalAddSalary" IsComposable="true" ReturnType="Collection(CompanyModel.fn_groupby_TotalAddSalary_Result)" />
+          <FunctionImport Name="fn_groupby_TotalSubTrackSalary" IsComposable="true" ReturnType="Collection(CompanyModel.fn_groupby_TotalSubTrackSalary_Result)" />
+          <FunctionImport Name="sp_SelectAddSalayInfo" ReturnType="Collection(CompanyModel.sp_SelectAddSalayInfo_Result)">
+            <Parameter Name="EmpID" Mode="In" Type="Int32" />
+            <Parameter Name="BankID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Select_DepartmentSalaryReport" ReturnType="Collection(CompanyModel.sp_Select_DepartmentSalaryReport_Result)">
+          <Parameter Name="BankID" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="Sp_Employee_Attend_Result">
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="WorkTime" Nullable="false" MaxLength="25" />
+        </ComplexType>
+        <ComplexType Name="sp_GetAttendance_Result">
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Day" Nullable="true" MaxLength="30" />
+          <Property Type="DateTime" Name="AttendTime" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="LeaveTime" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="WorkTime" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_Login_Employees_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="Guid" Name="EmployeeNumber" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_SelectDepartment_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="DepartmentName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Description" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_SelectJobTitle_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" />
+          <Property Type="Decimal" Name="RangeMin" Nullable="true" Precision="9" Scale="2" />
+          <Property Type="Decimal" Name="RangeMax" Nullable="true" Precision="9" Scale="2" />
+          <Property Type="Boolean" Name="ISDelete" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_Select_Employees_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="Guid" Name="EmployeeNumber" Nullable="true" />
+          <Property Type="Decimal" Name="Salary" Nullable="true" Precision="9" Scale="2" />
+          <Property Type="DateTime" Name="HireDate" Nullable="true" />
+          <Property Type="DateTime" Name="DateOFBirth" Nullable="true" />
+          <Property Type="Binary" Name="Picture" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="PictureUrl" Nullable="true" />
+          <Property Type="Boolean" Name="ISActive" Nullable="true" />
+          <Property Type="Int32" Name="DepartmentID" Nullable="true" />
+          <Property Type="String" Name="password" Nullable="true" />
+          <Property Type="Int32" Name="FingerPrintNumber" Nullable="true" />
+          <Property Type="String" Name="Marital_status" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Gender" Nullable="true" MaxLength="6" />
+          <Property Type="Int32" Name="JobID" Nullable="true" />
+          <Property Type="String" Name="username" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="sp_Select_Employees1_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Salary" Nullable="true" Precision="9" Scale="2" />
+          <Property Type="String" Name="DepartmentName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Name1" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_Select_Employees_HaveLogin_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="username" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="password" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_Select_Sanction_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Sanction_Name" Nullable="true" />
+          <Property Type="String" Name="Sanction_Decription" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_select_Department_and_Manager_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="DepartmentName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Description" Nullable="true" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="sp_select_Login_Employees_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="EmployeesID" Nullable="true" />
+        </ComplexType>
+        <Association Name="FK_Bank_Informations_Employees">
+          <End Type="CompanyModel.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="CompanyModel.Bank_Informations" Role="Bank_Informations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Bank_Informations">
+              <PropertyRef Name="EmployeeInformationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bank_Informations_SalaryInformation1">
+          <End Type="CompanyModel.SalaryInformation" Role="SalaryInformation" Multiplicity="0..1" />
+          <End Type="CompanyModel.Bank_Informations" Role="Bank_Informations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SalaryInformation">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Bank_Informations">
+              <PropertyRef Name="SalaryInformationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="sp_IFEmployeesGetSalary_Result">
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Name1" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Salary" Nullable="true" Precision="9" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="AddSalaryBank_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="AddSalary" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="IFTakedSalay_Result">
+          <Property Type="Int32" Name="BankID" Nullable="true" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Sp_SelectSalary_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Salary" Nullable="true" Precision="9" Scale="2" />
+          <Property Type="Decimal" Name="AllSalary" Nullable="true" Precision="9" Scale="2" />
+          <Property Type="Decimal" Name="Insurance" Nullable="true" Precision="9" Scale="2" />
+          <Property Type="Decimal" Name="TaxValue" Nullable="true" Precision="9" Scale="3" />
+          <Property Type="Decimal" Name="AddToSalary" Nullable="true" Precision="9" Scale="3" />
+          <Property Type="Decimal" Name="SubTrackToSalary" Nullable="true" Precision="9" Scale="3" />
+          <Property Type="String" Name="AccountName" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Sp_SelectSalary_BankID_Result">
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Salary" Nullable="true" Precision="9" Scale="2" />
+          <Property Type="Decimal" Name="AllSalary" Nullable="true" Precision="9" Scale="2" />
+          <Property Type="Decimal" Name="Insurance" Nullable="true" Precision="9" Scale="2" />
+          <Property Type="Decimal" Name="TaxValue" Nullable="true" Precision="9" Scale="3" />
+          <Property Type="Decimal" Name="AddToSalary" Nullable="true" Precision="9" Scale="3" />
+          <Property Type="Decimal" Name="SubTrackToSalary" Nullable="true" Precision="9" Scale="3" />
+          <Property Type="String" Name="AccountName" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SubSalaryBank_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="subSalary" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="fn_AddSalary_Result">
+          <Property Type="Int32" Name="infoID" Nullable="false" />
+          <Property Type="Int32" Name="empID" Nullable="false" />
+          <Property Type="Decimal" Name="addSal" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="fn_SubTractSalary_Result">
+          <Property Type="Int32" Name="infoID" Nullable="false" />
+          <Property Type="Int32" Name="empID" Nullable="false" />
+          <Property Type="Decimal" Name="subtractSalary" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="fn_groupby_TotalAddSalary_Result">
+          <Property Type="Int32" Name="DepartmentID" Nullable="false" />
+          <Property Type="String" Name="DepartmentName" Nullable="true" MaxLength="100" />
+          <Property Type="Decimal" Name="TotalAddSalary" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="fn_groupby_TotalSubTrackSalary_Result">
+          <Property Type="Int32" Name="DepartmentID" Nullable="false" />
+          <Property Type="String" Name="DepartmentName" Nullable="true" MaxLength="100" />
+          <Property Type="Decimal" Name="totalSubTrackSalary" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="sp_SelectAddSalayInfo_Result">
+          <Property Type="Decimal" Name="amount" Nullable="true" Precision="9" Scale="2" />
+          <Property Type="String" Name="Justification" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_Select_DepartmentSalaryReport_Result">
+          <Property Type="String" Name="DepartmentName" Nullable="true" MaxLength="100" />
+          <Property Type="Decimal" Name="TotalAllSalary" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="TotalInsurance" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="TotalTaxValue" Nullable="true" Precision="38" Scale="3" />
+          <Property Type="Decimal" Name="totalSubTrackSalary" Nullable="true" Precision="9" Scale="3" />
+          <Property Type="Decimal" Name="TotalAddSalary" Nullable="true" Precision="9" Scale="3" />
+          <Property Type="Decimal" Name="TotalNetSalary" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CompanyModelStoreContainer" CdmEntityContainer="CompanyEntities">
+          <EntitySetMapping Name="AddSalaries">
+            <EntityTypeMapping TypeName="CompanyModel.AddSalary">
+              <MappingFragment StoreEntitySet="AddSalary">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Justification" ColumnName="Justification" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AttendanceDays">
+            <EntityTypeMapping TypeName="CompanyModel.AttendanceDay">
+              <MappingFragment StoreEntitySet="AttendanceDays">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Attendance_Date" ColumnName="Attendance_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AttendanceDays_Employees">
+            <EntityTypeMapping TypeName="CompanyModel.AttendanceDays_Employees">
+              <MappingFragment StoreEntitySet="AttendanceDays_Employees">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="AttendanceID" ColumnName="AttendanceID" />
+                <ScalarProperty Name="AttendTime" ColumnName="AttendTime" />
+                <ScalarProperty Name="LeaveTime" ColumnName="LeaveTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Banks">
+            <EntityTypeMapping TypeName="CompanyModel.Bank">
+              <MappingFragment StoreEntitySet="Bank">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="BankBlance" ColumnName="BankBlance" />
+                <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bank_Informations">
+            <EntityTypeMapping TypeName="CompanyModel.Bank_Informations">
+              <MappingFragment StoreEntitySet="Bank_Informations">
+                <ScalarProperty Name="SalaryInformationID" ColumnName="SalaryInformationID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="BankID" ColumnName="BankID" />
+                <ScalarProperty Name="EmployeeInformationID" ColumnName="EmployeeInformationID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Departments">
+            <EntityTypeMapping TypeName="CompanyModel.Department">
+              <MappingFragment StoreEntitySet="Department">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ISActive" ColumnName="ISActive" />
+                <ScalarProperty Name="ManagerID" ColumnName="ManagerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="CompanyModel.Employee">
+              <MappingFragment StoreEntitySet="Employees">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="EmployeeNumber" ColumnName="EmployeeNumber" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+                <ScalarProperty Name="HireDate" ColumnName="HireDate" />
+                <ScalarProperty Name="DateOFBirth" ColumnName="DateOFBirth" />
+                <ScalarProperty Name="Picture" ColumnName="Picture" />
+                <ScalarProperty Name="PictureUrl" ColumnName="PictureUrl" />
+                <ScalarProperty Name="ISActive" ColumnName="ISActive" />
+                <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="FingerPrintNumber" ColumnName="FingerPrintNumber" />
+                <ScalarProperty Name="Marital_status" ColumnName="Marital_status" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="JobID" ColumnName="JobID" />
+                <ScalarProperty Name="username" ColumnName="username" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Have_Login_Program">
+            <EntityTypeMapping TypeName="CompanyModel.Have_Login_Program">
+              <MappingFragment StoreEntitySet="Have_Login_Program">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="EmployeesID" ColumnName="EmployeesID" />
+                <ScalarProperty Name="ISDeleted" ColumnName="ISDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JobTitles">
+            <EntityTypeMapping TypeName="CompanyModel.JobTitle">
+              <MappingFragment StoreEntitySet="JobTitles">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="RangeMin" ColumnName="RangeMin" />
+                <ScalarProperty Name="RangeMax" ColumnName="RangeMax" />
+                <ScalarProperty Name="ISDelete" ColumnName="ISDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SalaryInfomation_AddSalary">
+            <EntityTypeMapping TypeName="CompanyModel.SalaryInfomation_AddSalary">
+              <MappingFragment StoreEntitySet="SalaryInfomation_AddSalary">
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SalaryInformationID" ColumnName="SalaryInformationID" />
+                <ScalarProperty Name="AddSalaryID" ColumnName="AddSalaryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SalaryInformations">
+            <EntityTypeMapping TypeName="CompanyModel.SalaryInformation">
+              <MappingFragment StoreEntitySet="SalaryInformation">
+                <ScalarProperty Name="TaxValue" ColumnName="TaxValue" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="DateOFSalary" ColumnName="DateOFSalary" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+                <ScalarProperty Name="AllSalary" ColumnName="AllSalary" />
+                <ScalarProperty Name="AccountName" ColumnName="AccountName" />
+                <ScalarProperty Name="TaxInformationID" ColumnName="TaxInformationID" />
+                <ScalarProperty Name="Insurance" ColumnName="Insurance" />
+                <ScalarProperty Name="SalaryAfterInsurance" ColumnName="SalaryAfterInsurance" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SalaryInformation_SubTrack">
+            <EntityTypeMapping TypeName="CompanyModel.SalaryInformation_SubTrack">
+              <MappingFragment StoreEntitySet="SalaryInformation_SubTrack">
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SalaryInformationID" ColumnName="SalaryInformationID" />
+                <ScalarProperty Name="SubTackSalary" ColumnName="SubTackSalary" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SalaryTaxInformations">
+            <EntityTypeMapping TypeName="CompanyModel.SalaryTaxInformation">
+              <MappingFragment StoreEntitySet="SalaryTaxInformation">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Taxpercent" ColumnName="Taxpercent" />
+                <ScalarProperty Name="MaxValue" ColumnName="MaxValue" />
+                <ScalarProperty Name="MinValue" ColumnName="MinValue" />
+                <ScalarProperty Name="TaxValue" ColumnName="TaxValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sanctions_List">
+            <EntityTypeMapping TypeName="CompanyModel.Sanctions_List">
+              <MappingFragment StoreEntitySet="Sanctions_List">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Sanction_Name" ColumnName="Sanction_Name" />
+                <ScalarProperty Name="Sanction_Decription" ColumnName="Sanction_Decription" />
+                <ScalarProperty Name="ISDeleted" ColumnName="ISDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubTractSalaries">
+            <EntityTypeMapping TypeName="CompanyModel.SubTractSalary">
+              <MappingFragment StoreEntitySet="SubTractSalary">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Justification" ColumnName="Justification" />
+                <ScalarProperty Name="SanctionsID" ColumnName="SanctionsID" />
+                <ScalarProperty Name="IDSalaryInformation" ColumnName="IDSalaryInformation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="CompanyModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Sp_Employee_Attend" FunctionName="CompanyModel.Store.Sp_Employee_Attend">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyModel.Sp_Employee_Attend_Result">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="WorkTime" ColumnName="WorkTime" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="fn_AttendTimeProccess" FunctionName="CompanyModel.Store.fn_AttendTimeProccess" />
+          <FunctionImportMapping FunctionImportName="sp_AddDepartment" FunctionName="CompanyModel.Store.sp_AddDepartment" />
+          <FunctionImportMapping FunctionImportName="sp_AddSanction" FunctionName="CompanyModel.Store.sp_AddSanction" />
+          <FunctionImportMapping FunctionImportName="sp_AttendEmployee" FunctionName="CompanyModel.Store.sp_AttendEmployee" />
+          <FunctionImportMapping FunctionImportName="sp_Delete_Login" FunctionName="CompanyModel.Store.sp_Delete_Login" />
+          <FunctionImportMapping FunctionImportName="sp_Delete_Sanctions" FunctionName="CompanyModel.Store.sp_Delete_Sanctions" />
+          <FunctionImportMapping FunctionImportName="sp_EditDepartment" FunctionName="CompanyModel.Store.sp_EditDepartment" />
+          <FunctionImportMapping FunctionImportName="sp_EditEmployees" FunctionName="CompanyModel.Store.sp_EditEmployees" />
+          <FunctionImportMapping FunctionImportName="sp_EditSanction" FunctionName="CompanyModel.Store.sp_EditSanction" />
+          <FunctionImportMapping FunctionImportName="sp_EmployeesAttend" FunctionName="CompanyModel.Store.sp_EmployeesAttend" />
+          <FunctionImportMapping FunctionImportName="sp_EmployeesLeave" FunctionName="CompanyModel.Store.sp_EmployeesLeave" />
+          <FunctionImportMapping FunctionImportName="sp_FlagDepartment" FunctionName="CompanyModel.Store.sp_FlagDepartment" />
+          <FunctionImportMapping FunctionImportName="sp_GetAttendance" FunctionName="CompanyModel.Store.sp_GetAttendance">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyModel.sp_GetAttendance_Result">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Day" ColumnName="Day" />
+                <ScalarProperty Name="AttendTime" ColumnName="AttendTime" />
+                <ScalarProperty Name="LeaveTime" ColumnName="LeaveTime" />
+                <ScalarProperty Name="WorkTime" ColumnName="WorkTime" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_InsertEmployees" FunctionName="CompanyModel.Store.sp_InsertEmployees" />
+          <FunctionImportMapping FunctionImportName="sp_Insert_Have_Login_Program" FunctionName="CompanyModel.Store.sp_Insert_Have_Login_Program" />
+          <FunctionImportMapping FunctionImportName="sp_Insert_Login" FunctionName="CompanyModel.Store.sp_Insert_Login" />
+          <FunctionImportMapping FunctionImportName="sp_Login_Employees" FunctionName="CompanyModel.Store.sp_Login_Employees">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyModel.sp_Login_Employees_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="EmployeeNumber" ColumnName="EmployeeNumber" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_SelectDepartment" FunctionName="CompanyModel.Store.sp_SelectDepartment">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyModel.sp_SelectDepartment_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_SelectJobTitle" FunctionName="CompanyModel.Store.sp_SelectJobTitle">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyModel.sp_SelectJobTitle_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="RangeMin" ColumnName="RangeMin" />
+                <ScalarProperty Name="RangeMax" ColumnName="RangeMax" />
+                <ScalarProperty Name="ISDelete" ColumnName="ISDelete" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Select_Employees" FunctionName="CompanyModel.Store.sp_Select_Employees">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyModel.sp_Select_Employees_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="EmployeeNumber" ColumnName="EmployeeNumber" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+                <ScalarProperty Name="HireDate" ColumnName="HireDate" />
+                <ScalarProperty Name="DateOFBirth" ColumnName="DateOFBirth" />
+                <ScalarProperty Name="Picture" ColumnName="Picture" />
+                <ScalarProperty Name="PictureUrl" ColumnName="PictureUrl" />
+                <ScalarProperty Name="ISActive" ColumnName="ISActive" />
+                <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="FingerPrintNumber" ColumnName="FingerPrintNumber" />
+                <ScalarProperty Name="Marital_status" ColumnName="Marital_status" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="JobID" ColumnName="JobID" />
+                <ScalarProperty Name="username" ColumnName="username" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Select_Employees1" FunctionName="CompanyModel.Store.sp_Select_Employees1">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyModel.sp_Select_Employees1_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+                <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+                <ScalarProperty Name="Name1" ColumnName="Name1" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Select_Employees_HaveLogin" FunctionName="CompanyModel.Store.sp_Select_Employees_HaveLogin">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyModel.sp_Select_Employees_HaveLogin_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Select_Sanction" FunctionName="CompanyModel.Store.sp_Select_Sanction">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyModel.sp_Select_Sanction_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Sanction_Name" ColumnName="Sanction_Name" />
+                <ScalarProperty Name="Sanction_Decription" ColumnName="Sanction_Decription" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_UnFlagDepartment" FunctionName="CompanyModel.Store.sp_UnFlagDepartment" />
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="CompanyModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="CompanyModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_deleteAddSalary" FunctionName="CompanyModel.Store.sp_deleteAddSalary" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="CompanyModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="CompanyModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="CompanyModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="CompanyModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_select_Department_and_Manager" FunctionName="CompanyModel.Store.sp_select_Department_and_Manager">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyModel.sp_select_Department_and_Manager_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_select_Login_Employees" FunctionName="CompanyModel.Store.sp_select_Login_Employees">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyModel.sp_select_Login_Employees_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="EmployeesID" ColumnName="EmployeesID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="CompanyModel.Store.sp_upgraddiagrams" />
+          <FunctionImportMapping FunctionImportName="sp_AddMonthSalary" FunctionName="CompanyModel.Store.sp_AddMonthSalary" />
+          <FunctionImportMapping FunctionImportName="sp_IFEmployeesGetSalary" FunctionName="CompanyModel.Store.sp_IFEmployeesGetSalary">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyModel.sp_IFEmployeesGetSalary_Result">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Name1" ColumnName="Name1" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="AddSalaryBank" FunctionName="CompanyModel.Store.AddSalaryBank">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyModel.AddSalaryBank_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="AddSalary" ColumnName="AddSalary" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="IFTakedSalay" FunctionName="CompanyModel.Store.IFTakedSalay">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyModel.IFTakedSalay_Result">
+                <ScalarProperty Name="BankID" ColumnName="BankID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Sp_SelectSalary" FunctionName="CompanyModel.Store.Sp_SelectSalary">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyModel.Sp_SelectSalary_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+                <ScalarProperty Name="AllSalary" ColumnName="AllSalary" />
+                <ScalarProperty Name="Insurance" ColumnName="Insurance" />
+                <ScalarProperty Name="TaxValue" ColumnName="TaxValue" />
+                <ScalarProperty Name="AddToSalary" ColumnName="AddToSalary" />
+                <ScalarProperty Name="SubTrackToSalary" ColumnName="SubTrackToSalary" />
+                <ScalarProperty Name="AccountName" ColumnName="AccountName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Sp_SelectSalary_BankID" FunctionName="CompanyModel.Store.Sp_SelectSalary_BankID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyModel.Sp_SelectSalary_BankID_Result">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+                <ScalarProperty Name="AllSalary" ColumnName="AllSalary" />
+                <ScalarProperty Name="Insurance" ColumnName="Insurance" />
+                <ScalarProperty Name="TaxValue" ColumnName="TaxValue" />
+                <ScalarProperty Name="AddToSalary" ColumnName="AddToSalary" />
+                <ScalarProperty Name="SubTrackToSalary" ColumnName="SubTrackToSalary" />
+                <ScalarProperty Name="AccountName" ColumnName="AccountName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SubSalaryBank" FunctionName="CompanyModel.Store.SubSalaryBank">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyModel.SubSalaryBank_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="subSalary" ColumnName="subSalary" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="fn_AddSalary" FunctionName="CompanyModel.Store.fn_AddSalary">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyModel.fn_AddSalary_Result">
+                <ScalarProperty Name="infoID" ColumnName="infoID" />
+                <ScalarProperty Name="empID" ColumnName="empID" />
+                <ScalarProperty Name="addSal" ColumnName="addSal" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="fn_SubTractSalary" FunctionName="CompanyModel.Store.fn_SubTractSalary">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyModel.fn_SubTractSalary_Result">
+                <ScalarProperty Name="infoID" ColumnName="infoID" />
+                <ScalarProperty Name="empID" ColumnName="empID" />
+                <ScalarProperty Name="subtractSalary" ColumnName="subtractSalary" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="fn_groupby_TotalAddSalary" FunctionName="CompanyModel.Store.fn_groupby_TotalAddSalary">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyModel.fn_groupby_TotalAddSalary_Result">
+                <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+                <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+                <ScalarProperty Name="TotalAddSalary" ColumnName="TotalAddSalary" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="fn_groupby_TotalSubTrackSalary" FunctionName="CompanyModel.Store.fn_groupby_TotalSubTrackSalary">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyModel.fn_groupby_TotalSubTrackSalary_Result">
+                <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+                <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+                <ScalarProperty Name="totalSubTrackSalary" ColumnName="totalSubTrackSalary" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_SelectAddSalayInfo" FunctionName="CompanyModel.Store.sp_SelectAddSalayInfo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyModel.sp_SelectAddSalayInfo_Result">
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="Justification" ColumnName="Justification" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Select_DepartmentSalaryReport" FunctionName="CompanyModel.Store.sp_Select_DepartmentSalaryReport">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyModel.sp_Select_DepartmentSalaryReport_Result">
+                <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+                <ScalarProperty Name="TotalAllSalary" ColumnName="TotalAllSalary" />
+                <ScalarProperty Name="TotalInsurance" ColumnName="TotalInsurance" />
+                <ScalarProperty Name="TotalTaxValue" ColumnName="TotalTaxValue" />
+                <ScalarProperty Name="totalSubTrackSalary" ColumnName="totalSubTrackSalary" />
+                <ScalarProperty Name="TotalAddSalary" ColumnName="TotalAddSalary" />
+                <ScalarProperty Name="TotalNetSalary" ColumnName="TotalNetSalary" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
